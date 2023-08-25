@@ -16,8 +16,15 @@ for build in buildlist:
             dispattr="unknown"
         info=(info+"\t"+dispattr)
     info=info+"\n"
-print(info)
-dlindex=input()
+while True:
+    try:
+        print(info)
+        dlindex=int(input())
+        if(dlindex>=len(buildlist)):
+            continue
+        break
+    except:
+        continue
 dlurl=json.dumps(buildlist[int(dlindex)].get("url")).strip("\"")
 filetoextract=json.dumps(buildlist[int(dlindex)].get("file")).strip("\"")
 dlzipfile=dlurl.split("/")[-1]
